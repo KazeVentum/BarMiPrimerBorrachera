@@ -15,10 +15,12 @@ import static com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.security.
 @Configuration
 public class JWTAuthtenticationConfig {
 
-    public String getJWTToken(String username) {
+    public String getJWTToken(String username, String rol) {
+        // Convertir el rol en una lista de GrantedAuthority
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList("ROLE_USER");
+                .commaSeparatedStringToAuthorityList("ROLE_" + rol.toUpperCase());
 
+        // Construir el token con el rol como claim
         String token = Jwts
                 .builder()
                 .setId("campuscl")
@@ -27,11 +29,11 @@ public class JWTAuthtenticationConfig {
                         grantedAuthorities.stream()
                                 .map(GrantedAuthority::getAuthority)
                                 .collect(Collectors.toList()))
+                .claim("role", rol)  // Agregar el rol como un claim adicional
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
-                .signWith(getSigningKey(SUPER_SECRET_KEY),  SignatureAlgorithm.HS512).compact();
+                .signWith(getSigningKey(SUPER_SECRET_KEY), SignatureAlgorithm.HS512).compact();
 
         return "Bearer " + token;
     }
-
 }

@@ -27,7 +27,12 @@ public class LoginController {
         Admin admin = adminRepository.findByUsername(username);
 
         if (admin != null && admin.getPassword().equals(password)) {
-            String token = jwtAuthtenticationConfig.getJWTToken(username);
+            // Obtener el rol del admin
+            String rol = admin.getRol().getNombre();
+
+            // Generar el token con el rol incluido
+            String token = jwtAuthtenticationConfig.getJWTToken(username, rol);
+            admin.setToken(token);
             adminRepository.save(admin);
             return token;
         } else {

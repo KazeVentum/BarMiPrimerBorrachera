@@ -1,9 +1,6 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Admin {
@@ -15,11 +12,15 @@ public class Admin {
 
     private String password;
 
+    @Column(length = 512)
     private String token;
+
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
+    private Rol rol;
 
     public Admin() {
     }
-
     public Long getId() {
         return id;
     }
@@ -52,6 +53,14 @@ public class Admin {
         this.token = token;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
@@ -59,6 +68,7 @@ public class Admin {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", token='" + token + '\'' +
+                ", rol=" + rol.getNombre() +
                 '}';
     }
 }

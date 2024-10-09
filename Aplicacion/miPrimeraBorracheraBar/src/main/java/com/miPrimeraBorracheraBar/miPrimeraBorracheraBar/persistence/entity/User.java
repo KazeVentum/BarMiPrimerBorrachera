@@ -1,45 +1,29 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class User {
 
-    @JsonIgnore
     private String user;
-    @JsonIgnore
     private String pass;
     private String token;
+    private Rol rol;
 
     public User() {
     }
 
-    public User(String user, String pass, String token) {
+    public User(String user, String pass, String token, Rol rol) {
         this.user = user;
         this.pass = pass;
         this.token = token;
+        this.rol = rol;
     }
 
-    public String getUser() {
-        return user;
+    // Getters y Setters
+
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

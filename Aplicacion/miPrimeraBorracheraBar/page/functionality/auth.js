@@ -4,12 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (currentUrl.includes("login.html")) {
 
-    const redirect = document.getElementById("reDirectRegister");
-
-    redirect.addEventListener("click", function () {
-      window.location.href = "register.html";
-    })
-
     // Specific code for the login page
     const loginForm = document.getElementById("formUserToken");
     const loginUserNameInput = document.getElementById("adminToken");

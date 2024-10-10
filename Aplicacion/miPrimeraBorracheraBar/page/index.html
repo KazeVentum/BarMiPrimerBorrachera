@@ -6,9 +6,9 @@
 	<link rel="icon" href="../src/main/resources/bar_icon.svg" type="image/svg">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-	<link rel="stylesheet" href="./styles/dashboardStyle.css">
+	<link rel="stylesheet" href="./style/dashboardStyle.css">
+    <script src="./functionality/employee.js" defer type="module" async></script>
 	<script src="./functionality/main.js" defer type="module" async></script>
-	<script src="./functionality/app.js" defer type="module" async></script>
 	<title>Bar Mi primera Borrachera</title>
 </head>
 <body>
@@ -20,25 +20,11 @@
 			<li><a href="#" class="active"><i class='bx bxs-dashboard icon'></i> Entities</a></li>
 			<li class="divider" data-text="Multitable queries">Multitable queries</li>
 			<li>
-				<a href="#"><i class='bx bxs-inbox icon' ></i> Customer <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">			
-					<li id="customersWithSalesRep_btn"><a href="#">Sales Represent</a></li>
-					<li id="customersThatHavePaid_btn"><a href="#">Paid Customers</a></li>
-					<li id="customersThatHaventPaid_btn"><a href="#">Unpaid Customers</a></li>
-					<li id="customersThatHavePaidAndOfficeCity_btn"><a href="#">Client paid<br>with his offices</a></li>
-					<li id="customersThatHaventPaidAndOfficeCity_btn"><a href="#">Client Unpaid<br> with his offices</a></li>
-					<li id="allCustomersWithSalesRepCity_btn"><a href="#">All Clients<br> with his offices</a></li>
-					<li id="customersWithLateDeliveries_btn"><a href="#">Clients with<br> late deliveries</a></li>
-					<li id="customersWithoutPayments_btn"><a href="#">Clients<br> without payments</a></li>
-					<li id="customersWithoutOrders_btn"><a href="#">Clients<br> without orders</a></li>
-					<li id="customersWithoutOrdersAndPayments_btn"><a href="#">Clients without<br> orders and payments</a></li>
-					<li id="customersWithOdersButWithoutPayments_btn"><a href="#">Clients with orders<br> but without payments</a></li>
-					<li id="customersPerCountry_btn"><a href="#">Number of clients<br> per country</a></li>
-					<li id="CountByCityLikeIgnoreCase_btn"><a href="#">Count by City<br> name</a></li>
-					<li id="countCustomers_btn"><a href="#">Count Customers</a></li>
-					<li id="totalCustomersByCity_btn"><a href="#">Total Customers<br> by City</a></li>
-					<li id="totalCustomersWithoutEmployee_btn"><a href="#">Total Customers<br> without Employees</a></li>
-
+				<a href="#"><i class='bx bxs-inbox icon' ></i> Empleado <i class='bx bx-chevron-right icon-right' ></i></a>
+                <ul class="side-dropdown">
+					<li id="createEmployee_btn"><a href="#">Crear empleado</a></li>
+                    <li id="editEmployee_btn"><a href="#">Editar empleado</a></li>
+                    <li id="deleteEmployee_btn"><a href="#">Eliminar empleado</a></li>
 				</ul>
 			</li>
 			<li>

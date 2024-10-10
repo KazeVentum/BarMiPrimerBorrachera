@@ -4,19 +4,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Share:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 * {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 :root {
-    --grey: #F1F0F6;
-	--darkMagenta: #1F2544;
-	--lightMagenta:#474F7A;
+    --white: #e7fafe;
+	--iceBlue: #386FA4;
+	--lightBlue:#59A5D8;
 	--violet: #81689D;
-	--pink: #FFD0EC;
-	--black: #000
+	--whiteBlue: #84d2f6;
+	--mediumBlue: #244767;
+	--darkBlue: #1c3241;
+	--black: #151f25;
 }
 
 html {
@@ -24,7 +26,7 @@ html {
 }
 
 body {
-	background: var(--grey);
+	background: var(--white);
 	overflow-x: hidden;
 }
 
@@ -37,17 +39,12 @@ li {
 }
 
 
-
-
-
-
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
 	max-width: 260px;
 	width: 100%;
-	background: var(--lightMagenta);
+	background: var(--lightBlue);
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -67,18 +64,18 @@ li {
 	display: none;
 }
 #sidebar .brand {
-	font-family: 'Dancing Script', cursive;
-	font-size: 29px;
+	font-family: 'Poppins' Cursive;
+	font-size: 20px;
 	display: flex;
 	align-items: center;
 	height: 64px;
 	font-weight: 700;
-	color: var(--grey);
+	color: var(--darkBlue);
 	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 100;
-	background: var(--lightMagenta);
+	background: var(--lightBlue);
 	transition: all .3s ease;
 	padding: 0 6px;
 }
@@ -108,7 +105,7 @@ li {
 	display: flex;
 	align-items: center;
 	font-size: 14px;
-	color: var(--grey);
+	color: var(--darkBlue);
 	padding: 12px 16px 12px 0;
 	transition: all .3s ease;
 	border-radius: 10px;
@@ -116,15 +113,16 @@ li {
 	white-space: nowrap;
 }
 #sidebar .side-menu > li > a:hover {
-	background: var(--darkMagenta);
+	background: var(--whiteBlue);
+	color: var(--black)
 }
 #sidebar .side-menu > li > a.active .icon-right {
 	transform: rotateZ(90deg);
 }
 #sidebar .side-menu > li > a.active,
 #sidebar .side-menu > li > a.active:hover {
-	background: var(--darkMagenta);
-	color: var(--pink);
+	background: var(--iceBlue);
+	color: var(--white);
 }
 #sidebar .divider {
 	font-family: "dancing script" sans-serif;
@@ -132,7 +130,7 @@ li {
 	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #F1F0F6;
+	color: #060810;
 	transition: all .3s ease;
 	white-space: nowrap;
 }
@@ -152,7 +150,7 @@ li {
 	max-height: 1000px;
 }
 #sidebar .side-dropdown a:hover {
-	color: var(--pink);
+	color: var(--white);
 }
 #sidebar .ads {
 	width: 100%;
@@ -165,7 +163,7 @@ li {
 	display: block;
 }
 #sidebar .ads .wrapper {
-	background: #FFD0EC;
+	background: #000000;
 	padding: 20px;
 	border-radius: 10px;
 }
@@ -224,11 +222,11 @@ nav .profile img {
 }
 
 nav .profile-title {
-	color: #090714;
-	margin: 0;
+	color: var(--mediumBlue);
+	margin-top: 28px;
 }
 nav .profile .profile-link {
-	color: #c14d74;
+	color: #35357f;
 	position: absolute;
 	margin-right: 120px;
 	right: 0;
@@ -241,7 +239,7 @@ nav .profile .profile-link {
 	translate: 0 -20%;
 }
 nav .profile .profile-link.show {
-	background-color: var(--lightMagenta);
+	background-color: var(--lightBlue);
 	color: #F1F0F6;
 	opacity: 1;
 	pointer-events: visible;
@@ -253,13 +251,13 @@ nav .profile .profile-link a {
 	display: flex;
 	grid-gap: 10px;
 	font-size: 14px;
-	color: var(--dark);
+	color: var(--black);
 	align-items: center;
 	transition: all .3s ease;
 }
 nav .profile .profile-link a:hover {
-	background: var(--darkMagenta);
-	color: #FFD0EC;
+	background: var(--iceBlue);
+	color: #fbfbfb;
 }
 /* NAVBAR */
 
@@ -284,11 +282,11 @@ main .breadcrumbs li a {
 	font-size: 14px;
 }
 main .breadcrumbs li a {
-	color: #4c1636
+	color: var(--black)
 }
 main .breadcrumbs li a.active,
 main .breadcrumbs li.divider {
-	color: #30011d;
+	color: var(--iceBlue);
 	pointer-events: none;
 }
 main .info-data {
@@ -311,7 +309,7 @@ main .card .head {
 }
 main .card .head h2 {
 	font-size: 24px;
-	color: #81689D;
+	color: #202074;
 	font-weight: 600;
 }
 main .card .head p {
@@ -354,7 +352,7 @@ main .data .content-data {
 
 .card button {
     width: 100%;
-    background-color: var(--lightMagenta);
+    background-color: var(--lightBlue);
     color: #ececec;
     padding: 9px 0;
     border: none;
@@ -366,7 +364,7 @@ main .data .content-data {
 }
 
 .card button:hover {
-    background-color: #873ab0ed;
+    background-color: #34439bed;
     color: #ffffff;
 }
 
@@ -405,50 +403,11 @@ ul li {
 	margin-bottom: 5px; /* Espacio entre elementos de la lista */
 }
 
-/* ICONS STYLE */
 
-.bi-person-fill-gear {
-    transform: translateX(45px);
-}
-
-.bi-cart-x-fill{
-    transform:  translateX(45px); 
-}
-
-.bi-bag-x-fill {
-	transform: translateX(45px);
-}
-
-.bi-hourglass-bottom {
-transform: translateX(45px);
-}
-
-.bi-building {
-transform: translateX(45px);
-}
-
-.bi-person-up {
-	transform: translateX(45px);
-}
-
-.bi-person-dash {
-	transform: translateX(50px);
-}
-
-.bi-person-vcard-fill {
-	transform: translateX(50px);
-}
-
-.bi-person-standing {
-	transform: translateX(50px);
-}
-.bi-list-ol {
-	transform: translateX(90px);
-}
 
 #quantity {
 	transform: translateX(50px);
-	color: #81689D;
+	color: #ffffff;
 	font-size: 50px;
 }
   
@@ -472,7 +431,7 @@ transform: translateX(45px);
 }
 
 h2 {
-    color: #6750a4;
+    color: var(--mediumBlue);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     width: 100%;
@@ -486,7 +445,7 @@ h2 {
 label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #49454f;
+    color: var(--black);
     font-size: 0.9rem;
 }
 
@@ -510,8 +469,8 @@ input[type="tel"]:focus,
 input[type="password"]:focus,
 select:focus {
     outline: none;
-    border-color: #6750a4;
-    box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.2);
+    border-color: var(--mediumBlue);
+    box-shadow: 0 0 0 2px rgba(23, 17, 39, 0.2);
 }
 
 select {
@@ -540,22 +499,22 @@ button {
 
 button#cancelar {
     background-color: transparent;
-    color: #6750a4;
-    border: 1px solid #6750a4;
+    color: var(--mediumBlue);
+    border: 1px solid var(--mediumBlue);
 }
 
 button#cancelar:hover {
-    background-color: rgba(103, 80, 164, 0.1);
+    background-color: rgba(80, 102, 164, 0.1);
 }
 
 button#guardar {
-    background-color: #6750a4;
+    background-color: #2f5d87;
     color: white;
     border: none;
 }
 
 button#guardar:hover {
-    background-color: #553592;
+    background-color: #1f4364;
 }
 
 /* Responsive adjustments */

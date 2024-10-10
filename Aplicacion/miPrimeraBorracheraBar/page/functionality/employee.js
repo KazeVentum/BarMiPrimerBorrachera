@@ -34,11 +34,13 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
 
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="contrasena" required>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelar">Cancelar</button>
+                    <button type="submit" id="guardar">Guardar</button>
+                </div>
             </div>
-            <div class="form-actions">
-                <button type="button" id="cancelar">Cancelar</button>
-                <button type="submit" id="guardar">Guardar</button>
-            </div>
+
         </form>
 
         `;
@@ -102,7 +104,10 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
                 }
             })
             .then(data => {
+
                 console.log("Empleado creado con éxito:", data);
+                alert("Empleado creado con éxito"); // Muestra una alerta de éxito
+                document.getElementById('employeeCreateForm').reset();
             })
             .catch(error => {
                 console.error("Error al crear el empleado:", error);
@@ -126,64 +131,15 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
             })
             .then(data => {
                 console.log("registro creado con éxito:", data);
+                document.getElementById('employeeCreateForm').reset();
             })
             .catch(error => {
                 console.error("Error al crear el registro:", error);
             });
-
-
-
-
-
-
-
-
-
-
-            // Mostrar el objeto JSON en la consola
+            // Mostrar el objeto JSON enviado en la consola
             console.log(authData);
             console.log(customerData);
         });
-
 });
 
 
-// // Añadir un evento de escucha al formulario para recoger los datos cuando se guarden
-// const employeeCreateForm = document.getElementById('employeeCreateForm');
-// employeeCreateForm.addEventListener('submit', (event) => {
-//     event.preventDefault();  // Prevenir que se recargue la página
-
-//     // Recoger los valores del formulario
-//     const nombre = document.getElementById('nombre').value;
-//     const apellido = document.getElementById('apellido').value;
-//     const direccion = document.getElementById('direccion').value;
-//     const email = document.getElementById('email').value;
-//     const telefono = document.getElementById('telefono').value;
-//     const rol = document.getElementById('rol').value;
-//     const usuario = document.getElementById('usuario').value;
-//     const contrasena = document.getElementById('contrasena').value;
-
-//     // Crear el objeto JSON
-//     const customerData = {
-//         nombre: nombre,
-//         apellidos: apellido,
-//         direccion: direccion,
-//         telefono: telefono,
-//         email: email,
-//         rol: {
-//             id: parseInt(rol)
-//         }
-//     };
-
-//     const authData = {
-//         usuario: usuario,
-//         contrasena: contrasena,
-//         rol: {
-//             id: parseInt(rol)
-//         }
-//     };
-
-//     // Mostrar el objeto JSON en la consola
-//     console.log(authData);
-//     console.log(customerData);
-// });

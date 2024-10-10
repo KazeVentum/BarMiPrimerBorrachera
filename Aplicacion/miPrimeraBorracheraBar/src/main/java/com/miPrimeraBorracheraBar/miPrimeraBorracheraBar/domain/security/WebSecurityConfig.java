@@ -19,7 +19,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
-                .cors().and() // Agrega CORS
+                .cors().and() // fixea el problema del CORS por alguna razon
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(HttpMethod.POST, Constans.LOGIN_URL, Constans.REGISTER_URL).permitAll()

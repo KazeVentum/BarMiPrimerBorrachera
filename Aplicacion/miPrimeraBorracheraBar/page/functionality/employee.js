@@ -43,16 +43,13 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
 
         `;
     
-
         // Insertar el formulario en el cuerpo del documento (o en la sección deseada)
         const mainContent = document.querySelector('main');
         mainContent.appendChild(formContainer);
 
-        // Añadir un evento de escucha al formulario para recoger los datos cuando se guarden
-        const employeeCreateForm = document.getElementById('employeeCreateForm');
-        employeeCreateForm.addEventListener('submit', (event) => {
-            event.preventDefault();  // Prevenir que se recargue la página
-
+        document.getElementById("employeeCreateForm").addEventListener("submit",  function (event) {
+            event.preventDefault(); // Evita el envío del formulario tradicional
+        
             // Recoger los valores del formulario
             const nombre = document.getElementById('nombre').value;
             const apellido = document.getElementById('apellido').value;
@@ -76,87 +73,117 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
             };
 
             const authData = {
-                usuario: usuario,
-                contrasena: contrasena,
+                username: usuario,
+                password: contrasena,
                 rol: {
                     id: parseInt(rol)
                 }
             };
 
+
+        
+            // Obtiene el token JWT desde sessionStorage
+            const token = sessionStorage.getItem('jwtToken');
+        
+            // Realiza la petición POST al backend usando fetch, incluyendo el token en los headers
+            fetch("http://localhost:8080/empleado", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}` // Agrega el token JWT en el encabezado Authorization
+                },
+                body: JSON.stringify(customerData) // Envía los datos del empleado como JSON
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Error al crear el empleado");
+                }
+            })
+            .then(data => {
+                console.log("Empleado creado con éxito:", data);
+            })
+            .catch(error => {
+                console.error("Error al crear el empleado:", error);
+            });
+
+
+            fetch("http://localhost:8080/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}` // Agrega el token JWT en el encabezado Authorization
+                },
+                body: JSON.stringify(authData) // Envía los datos del empleado como JSON
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Error al crear el registro");
+                }
+            })
+            .then(data => {
+                console.log("registro creado con éxito:", data);
+            })
+            .catch(error => {
+                console.error("Error al crear el registro:", error);
+            });
+
+
+
+
+
+
+
+
+
+
             // Mostrar el objeto JSON en la consola
             console.log(authData);
             console.log(customerData);
         });
+
 });
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Encuentra el botón "Employee" en el DOM
-//     const employeeCreateButton = document.getElementById('createEmployee_btn');
+// // Añadir un evento de escucha al formulario para recoger los datos cuando se guarden
+// const employeeCreateForm = document.getElementById('employeeCreateForm');
+// employeeCreateForm.addEventListener('submit', (event) => {
+//     event.preventDefault();  // Prevenir que se recargue la página
 
-//     // Añadir evento de escucha al botón de employee
-//     employeeCreateButton.addEventListener('click', () => {
-//         // Crear el formulario dinámicamente
-//         const formContainer = document.createElement('div');
-//         formContainer.innerHTML = `
-//             <form id="employeeCreateForm">
-//                 <label for="nombre">Nombre:</label>
-//                 <input type="text" id="nombre" name="nombre" required><br>
+//     // Recoger los valores del formulario
+//     const nombre = document.getElementById('nombre').value;
+//     const apellido = document.getElementById('apellido').value;
+//     const direccion = document.getElementById('direccion').value;
+//     const email = document.getElementById('email').value;
+//     const telefono = document.getElementById('telefono').value;
+//     const rol = document.getElementById('rol').value;
+//     const usuario = document.getElementById('usuario').value;
+//     const contrasena = document.getElementById('contrasena').value;
 
-//                 <label for="apellido">Apellido:</label>
-//                 <input type="text" id="apellido" name="apellido" required><br>
+//     // Crear el objeto JSON
+//     const customerData = {
+//         nombre: nombre,
+//         apellidos: apellido,
+//         direccion: direccion,
+//         telefono: telefono,
+//         email: email,
+//         rol: {
+//             id: parseInt(rol)
+//         }
+//     };
 
-//                 <label for="direccion">Dirección:</label>
-//                 <input type="text" id="direccion" name="direccion" required><br>
+//     const authData = {
+//         usuario: usuario,
+//         contrasena: contrasena,
+//         rol: {
+//             id: parseInt(rol)
+//         }
+//     };
 
-//                 <label for="email">Email:</label>
-//                 <input type="email" id="email" name="email" required><br>
-
-//                 <label for="telefono">Teléfono:</label>
-//                 <input type="tel" id="telefono" name="telefono" required><br>
-
-//                 <label for="rol">Rol:</label>
-//                 <select id="rol" name="rol">
-//                     <option value="1">Administrador</option>
-//                     <option value="2">Cajero</option>
-//                     <option value="3">Mesero</option>
-//                 </select><br>
-
-//                 <button type="submit" id="guardar">Guardar</button>
-//             </form>
-//         `;
-
-//         // Insertar el formulario en el cuerpo del documento (o en la sección deseada)
-//         const mainContent = document.querySelector('main');
-//         mainContent.appendChild(formContainer);
-
-//         // Añadir un evento de escucha al formulario para recoger los datos cuando se guarden
-//         const employeeCreateForm = document.getElementById('employeeCreateForm');
-//         employeeCreateForm.addEventListener('submit', (event) => {
-//             event.preventDefault();  // Prevenir que se recargue la página
-
-//             // Recoger los valores del formulario
-//             const nombre = document.getElementById('nombre').value;
-//             const apellido = document.getElementById('apellido').value;
-//             const direccion = document.getElementById('direccion').value;
-//             const email = document.getElementById('email').value;
-//             const telefono = document.getElementById('telefono').value;
-//             const rol = document.getElementById('rol').value;
-
-//             // Crear el objeto JSON
-//             const customerData = {
-//                 nombre: nombre,
-//                 apellidos: apellido,
-//                 direccion: direccion,
-//                 telefono: telefono,
-//                 email: email,
-//                 rol: {
-//                     id: parseInt(rol)
-//                 }
-//             };
-
-//             // Mostrar el objeto JSON en la consola
-//             console.log(customerData);
-//         });
-//     });
+//     // Mostrar el objeto JSON en la consola
+//     console.log(authData);
+//     console.log(customerData);
 // });

@@ -10,13 +10,22 @@ export function cargarSedes() {
     .then(sedes => {
         const selectSede = document.getElementById('sede');
         selectSede.innerHTML = ''; // Limpiar opciones anteriores
+
+        // Agregar una opción por defecto que no sea válida
+        const defaultOption = document.createElement('option');
+        defaultOption.value = "";
+        defaultOption.text = "Selecciona una sede";
+        defaultOption.disabled = true;
+        defaultOption.selected = true; // Marcarla como seleccionada por defecto
+        selectSede.appendChild(defaultOption);
+
+        // Agregar las sedes dinámicamente
         sedes.forEach(sede => {
             const option = document.createElement('option');
             option.value = sede.id;
             option.text = sede.nombre;
             selectSede.appendChild(option);
         });
-        console.log("Sedes cargadas correctamente");
     })
     .catch(error => {
         console.error("Error al cargar sedes:", error);

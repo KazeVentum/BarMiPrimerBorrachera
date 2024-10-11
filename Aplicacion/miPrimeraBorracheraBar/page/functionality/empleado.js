@@ -85,6 +85,19 @@ export function crearEmpleados() {
             }
         }
 
+        
+
+    // Validar si el rol no ha sido seleccionado
+        if (rol === "") {
+            alert("Por favor, selecciona un rol para continuar.");
+            return; // Detiene el proceso si el rol no es válido
+        }
+
+        if (sede === "") {
+            alert("Por favor, selecciona una sede para continuar.");
+            return; // Detiene el proceso si el rol no es válido
+        }
+
         console.log(customerData)
 
         const authData = {
@@ -94,6 +107,7 @@ export function crearEmpleados() {
                 id: parseInt(rol)
             }
         };
+        
 
         const token = sessionStorage.getItem('jwtToken');
 
@@ -126,7 +140,12 @@ export function crearEmpleados() {
         .catch(error => console.error("Error al crear el registro:", error));
     });
 
+    document.getElementById("cancelar").addEventListener("click", function(event) {
+        document.getElementById('employeeCreateForm').reset();
+    })
 }
+
+
 
 export function editarEmpleados(){
     console.log("editar")

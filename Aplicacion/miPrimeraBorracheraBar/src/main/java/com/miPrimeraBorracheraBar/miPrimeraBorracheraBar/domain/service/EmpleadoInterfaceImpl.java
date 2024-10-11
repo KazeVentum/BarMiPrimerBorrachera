@@ -67,6 +67,7 @@ public class EmpleadoInterfaceImpl implements EmpleadoInterface {
                 empleadoExistente.setTelefono(empleadoUpdate.getTelefono());
                 empleadoExistente.setDireccion(empleadoUpdate.getDireccion());
                 empleadoExistente.setRol(empleadoUpdate.getRol());
+                empleadoExistente.setSede(empleadoUpdate.getSede());
                 empleadoRepository.save(empleadoExistente);
                 return ResponseEntity.ok(empleadoExistente);
             } else {

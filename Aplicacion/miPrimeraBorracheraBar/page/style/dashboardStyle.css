@@ -332,40 +332,68 @@ main .data .content-data {
 	
 }
 
-.card input {
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.07);
-    border-radius: 5px;
-    border: 2px solid rgba(67, 67, 67, 0.367);
-    padding: 0 10px;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--violet)
+main .info-data {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-gap: 20px;
 }
-
-.card input::placeholder {
-    color: #1a1b1992;
+main .info-data .card {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    background: var(--light);
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.203);
+    position: relative; /* Para posicionar los botones */
 }
-
-.card button {
-    width: 100%;
-    background-color: var(--lightBlue);
-    color: #ececec;
-    padding: 9px 0;
-    border: none;
-    font-size: 18px;
+main .card .head {
+    display: flex;
+    flex-direction: row; /* Alinea verticalmente */
+    justify-content: space-between;
+    align-items: flex-start;
+}
+main .card .head h1 {
+    font-size: 20px;
+    color: #202074;
     font-weight: 600;
+    margin-bottom: 10px;
+}
+main .card .head h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.buttons {
+    display: flex;
+    flex-direction: row; /* Los botones se apilan verticalmente */
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 16px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
-.card button:hover {
-    background-color: #34439bed;
-    color: #ffffff;
+.edit-btn {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336; /* Rojo */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
 }
 
 

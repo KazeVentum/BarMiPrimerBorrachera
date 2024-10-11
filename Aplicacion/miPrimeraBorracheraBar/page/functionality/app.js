@@ -4,8 +4,12 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
     empleado.crearEmpleados()
 })
 
-document.getElementById('editEmployee_btn').addEventListener("click", function() {
-    empleado.editarEmpleados()
+document.getElementById('showEmployee_btn').addEventListener("click", function() {
+    empleado.MostrarEmpleados()
+})
+
+document.getElementById('edit-btn').addEventListener("click", function() {
+    empleado.editEmployee()
 })
 
 document.getElementById('deleteEmployee_btn').addEventListener("click", function() {

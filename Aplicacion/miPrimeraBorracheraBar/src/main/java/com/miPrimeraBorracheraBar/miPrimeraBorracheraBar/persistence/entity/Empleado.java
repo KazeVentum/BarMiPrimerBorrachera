@@ -27,6 +27,10 @@ public class Empleado {
     @JoinColumn(name = "id_rol")
     private Rol rol;
 
+    @ManyToOne
+    @JoinColumn(name = "id_sede")
+    private Sede sede;
+
     // Constructor, getters y setters
 
     public Empleado() {
@@ -97,7 +101,8 @@ public class Empleado {
                 ", email='" + email + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", rol=" + rol.getNombre() +
+                ", rol=" + rol +
+                ", sede=" + sede +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Rol {
@@ -25,9 +26,13 @@ public class Rol {
         return nombre;
     }
 
+    @Column(name = "nombre")
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    private List<Empleado> empleados;
 
     @Override
     public String toString() {

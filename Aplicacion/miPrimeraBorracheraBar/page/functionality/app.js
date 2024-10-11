@@ -8,10 +8,3 @@ document.getElementById('showEmployee_btn').addEventListener("click", function()
     empleado.MostrarEmpleados()
 })
 
-document.getElementById('edit-btn').addEventListener("click", function() {
-    empleado.editEmployee()
-})
-
-document.getElementById('deleteEmployee_btn').addEventListener("click", function() {
-    empleado.EliminarEmpleados()
-})

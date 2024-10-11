@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((token) => {
           sessionStorage.setItem("jwtToken", token.trim()); //Save the JWT token in sessionStorage
-          alert("Successfully generated token");
           window.location.href = "index.html";
         })
         .catch((error) => {

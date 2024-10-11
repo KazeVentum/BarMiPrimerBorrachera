@@ -145,8 +145,6 @@ export function crearEmpleados() {
     })
 }
 
-
-
 export function MostrarEmpleados(){
     const token = sessionStorage.getItem('jwtToken'); 
     fetch('http://localhost:8080/empleado', {
@@ -176,8 +174,8 @@ export function MostrarEmpleados(){
                         </div>
                     </div>
                     <div class="buttons">
-                        <button class="edit-btn" onclick="editEmployee(${data.id})">Editar</button>
-                        <button class="delete-btn">Eliminar</button>
+                        <button class="edit-btn" id="edit-btn" onclick="editarEmpleado(${data.id})">Editar</button>
+                        <button class="delete-btn" id="delete-btn" onclick="deleteEmployee(${data.id})">Eliminar</button>
                     </div>
                 </div>
             `;
@@ -188,21 +186,158 @@ export function MostrarEmpleados(){
     .catch(error => console.error('Error:', error));
 }
 
-// Función para manejar el clic en el botón de editar
-function editEmployee(id) {
-    window.location.href = `editarEmpleado.html?id=${id}`;
+function editarEmpleado(id){
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch(`http://localhost:8080/empleado/${id}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => { 
+
+        //Inyecta formulario para edicion
+        const formContainer = document.getElementById('showData');
+        formContainer.innerHTML = `
+				<form id="employeeEditForm">
+					<div class="main-form">
+						<label for="nombreEdit">Nombre Nuevo:</label>
+						<input type="text" id="nombreEdit" name="nombre" required>
+			
+						<label for="apellidoEdit">Apellido:</label>
+						<input type="text" id="apellidoEdit" name="apellido" required>
+			
+						<label for="direccionEdit">Dirección:</label>
+						<input type="text" id="direccionEdit" name="direccion" required>
+			
+						<label for="emailEdit">Email:</label>
+						<input type="email" id="emailEdit" name="email" required>
+			
+						<label for="telefonoEdit">Teléfono:</label>
+						<input type="tel" id="telefonoEdit" name="telefono" required>
+			
+						<label for="sedeEdit">Sede:</label>
+						<select id="sedeEdit" name="sedeEdit">
+							<!-- Opciones serán insertadas dinámicamente -->
+						</select>
+			
+						<label for="rolEdit">Rol:</label>
+						<select id="rolEdit" name="rolEdit">
+							<!-- Opciones serán insertadas dinámicamente -->
+						</select>
+					
+
+					<div class="form-actions">
+						<button type="button" id="cancelar">Cancelar</button>
+						<button type="submit" id="guardar">Guardar</button>
+					</div>
+				</form>
+        `;
+        const mainContent = document.querySelector('main');
+        mainContent.appendChild(formContainer);
+        
+        // Rellenar el formulario con la información del empleado
+        document.getElementById("nombreEdit").value = data.nombre;
+        document.getElementById("apellidoEdit").value = data.apellidos;
+        document.getElementById("direccionEdit").value = data.direccion;
+        document.getElementById("emailEdit").value = data.email;
+        document.getElementById("telefonoEdit").value = data.telefono;
+        
+
+        const selectedSedeId = data.sede.id
+        const selectedRolId = data.rol.id
+
+        sede.cargarSedesEdicion(selectedSedeId);
+        rol.cargarRolesEdicion(selectedRolId)
+        
+        document.getElementById("employeeEditForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+        
+            const empleadoEditado = {
+                nombre: document.getElementById("nombreEdit").value,
+                apellidos: document.getElementById("apellidoEdit").value,
+                direccion: document.getElementById("direccionEdit").value,
+                email: document.getElementById("emailEdit").value,
+                telefono: document.getElementById("telefonoEdit").value,
+                sede: { id: document.getElementById("sedeEdit").value },
+                rol: { id: document.getElementById("rolEdit").value },
+            };
+        
+            console.log("Datos a enviar:", empleadoEditado); // Depuración
+        
+            try {
+                const token = sessionStorage.getItem('jwtToken');
+                const response = await fetch(`http://localhost:8080/empleado/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(empleadoEditado),
+                });
+        
+                console.log("Respuesta del servidor (actualización):", response); // Depuración
+        
+                if (response.ok) {
+                    autoClickButton('showEmployee_btn')
+                } else {
+                    console.error("Error al actualizar el empleado");
+                }
+            } catch (error) {
+                console.error("Error en la solicitud de actualización:", error);
+            }
+        });
+    })
+    .catch(error => console.error('Error:', error));
+
+    
 }
 
-// Asegúrate de que la función editEmployee sea accesible globalmente
-window.editEmployee = editEmployee;
+// Funcion de pregunta de si quiere continuar
+function deleteEmployee(id) {
+    if (confirm("¿Realmente quiere eliminar este usuario?")) {
+        // Llamar al controlador para eliminar el usuario
+        eliminarEmpleado(id);
 
-export function editarEmpleados(id) {
-    window.location.href = `editarEmpleado.html?id=${id}`;
+    }
+}
+// Función para eliminar el empleado usando el controlador
+function eliminarEmpleado(id) {
+    const token = sessionStorage.getItem('jwtToken');
+    
+    fetch(`http://localhost:8080/empleado/${id}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("El empleado ha sido eliminado con exito.")
+            autoClickButton('showEmployee_btn')
+        } else {
+            return Promise.reject("Error al eliminar el empleado");
+        }
+    })
 }
 
-export function EliminarEmpleados(){
-    console.log("eliminar")
+// Función para hacer clic automáticamente en el botón
+ function autoClickButton(redirectButton) {
+    const button = document.getElementById(redirectButton); // Cambia este selector según corresponda
+    if (button) {
+        button.click();
+    }
 }
+
+// Asegúrate de que la función eliminarEmpleado sea accesible globalmente
+window.deleteEmployee = deleteEmployee
+
+window.editarEmpleado = editarEmpleado
+
+
 
 
 

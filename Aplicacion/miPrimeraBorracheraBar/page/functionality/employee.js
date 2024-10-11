@@ -165,6 +165,11 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
             <label for="telefono">Teléfono:</label>
             <input type="tel" id="telefono" name="telefono" required>
 
+            <label for="sede">Sede:</label>
+            <select id="sede" name="sede">
+                <!-- Opciones serán insertadas dinámicamente -->
+            </select>
+
             <label for="rol">Rol:</label>
             <select id="rol" name="rol">
                 <!-- Opciones serán insertadas dinámicamente -->
@@ -200,6 +205,7 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
         const email = document.getElementById('email').value;
         const telefono = document.getElementById('telefono').value;
         const rol = document.getElementById('rol').value;
+        const sede = document.getElementById('sede').value; 
         const usuario = document.getElementById('usuario').value;
         const contrasena = document.getElementById('contrasena').value;
 
@@ -209,6 +215,7 @@ document.getElementById('createEmployee_btn').addEventListener("click", function
             direccion: direccion,
             telefono: telefono,
             email: email,
+            sede: sede,
             rol: {
                 id: parseInt(rol)
             }
@@ -284,7 +291,44 @@ function cargarRoles() {
         console.error("Error al cargar roles:", error);
         alert("Ocurrió un error al cargar los roles. Revisa la consola para más detalles.");
     });
+
+    function cargarSedes() {
+        const token = sessionStorage.getItem('jwtToken');
+        console.log("Token JWT:", token); // Verifica si el token está presente
+        fetch("http://localhost:8080/sede", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.text().then(text => Promise.reject(text)); // Devuelve el error en texto
+            }
+        })
+        .then(roles => {
+            const selectRol = document.getElementById('sede');
+            selectRol.innerHTML = ''; // Limpiar opciones anteriores
+            roles.forEach(sede => {
+                const option = document.createElement('option');
+                option.value = sede.id;
+                option.text = sede.nombre;
+                selectRol.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error al cargar sedes:", error);
+            alert("Ocurrió un error al cargar los sedes. Revisa la consola para más detalles.");
+        });
+    
+    
+    }
+    
 }
+
+
 
 
 

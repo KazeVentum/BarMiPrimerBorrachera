@@ -32,7 +32,6 @@ public class Empleado {
     private Sede sede;
 
     // Constructor, getters y setters
-
     public Empleado() {
     }
 
@@ -90,6 +89,14 @@ public class Empleado {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
     }
 
     @Override

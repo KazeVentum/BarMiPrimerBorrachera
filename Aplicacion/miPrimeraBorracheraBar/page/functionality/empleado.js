@@ -6,7 +6,7 @@ export function crearEmpleados() {
 
     formContainer.innerHTML = `
         <form id="employeeCreateForm">
-        <h2>Creación de Empleado</h2>
+            <h2>Creación de Empleado</h2>
         <div class="main-form">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
@@ -175,7 +175,7 @@ export function MostrarEmpleados(){
                     </div>
                     <div class="buttons">
                         <button class="edit-btn" id="edit-btn" onclick="editarEmpleado(${data.id})">Editar</button>
-                        <button class="delete-btn" id="delete-btn" onclick="deleteEmployee(${data.id})">Eliminar</button>
+                        <button class="delete-btn" id="delete-btn" onclick="questionDeleteEmployee(${data.id})">Eliminar</button>
                     </div>
                 </div>
             `;
@@ -296,11 +296,10 @@ function editarEmpleado(id){
 }
 
 // Funcion de pregunta de si quiere continuar
-function deleteEmployee(id) {
+function questionDeleteEmployee(id) {
     if (confirm("¿Realmente quiere eliminar este usuario?")) {
         // Llamar al controlador para eliminar el usuario
         eliminarEmpleado(id);
-
     }
 }
 // Función para eliminar el empleado usando el controlador
@@ -332,10 +331,10 @@ function eliminarEmpleado(id) {
     }
 }
 
-// Asegúrate de que la función eliminarEmpleado sea accesible globalmente
-window.deleteEmployee = deleteEmployee
 
 window.editarEmpleado = editarEmpleado
+window.questionDeleteEmployee = questionDeleteEmployee
+
 
 
 

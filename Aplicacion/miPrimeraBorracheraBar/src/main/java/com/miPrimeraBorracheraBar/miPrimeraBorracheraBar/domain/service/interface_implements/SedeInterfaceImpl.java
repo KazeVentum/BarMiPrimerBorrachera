@@ -1,11 +1,9 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements;
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.EmpleadoIdNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.EmpleadoNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.SedeIdNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.SedeNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.sedeException.SedeIdNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.sedeException.SedeNotFoundException;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.repository.SedeRepository;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Empleado;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces.SedeInterface;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Sede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SedeInterfaceImpl implements SedeInterface{
+public class SedeInterfaceImpl implements SedeInterface {
 
     private final SedeRepository sedeRepository;
 

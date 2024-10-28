@@ -1,4 +1,4 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.rolException;
 
 
 

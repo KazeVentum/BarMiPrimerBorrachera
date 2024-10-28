@@ -1,6 +1,5 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces;
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Empleado;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Sede;
 import org.springframework.http.ResponseEntity;
 

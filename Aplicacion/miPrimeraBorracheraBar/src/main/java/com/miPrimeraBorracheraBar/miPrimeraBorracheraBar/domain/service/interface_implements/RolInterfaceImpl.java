@@ -1,9 +1,10 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements;
 
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.RolIdNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.RolNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.rolException.RolIdNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.rolException.RolNotFoundException;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.repository.RolRepository;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces.RolInterface;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

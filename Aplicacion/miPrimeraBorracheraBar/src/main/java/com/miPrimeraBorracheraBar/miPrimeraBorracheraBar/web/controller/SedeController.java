@@ -1,9 +1,7 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.web.controller;
 
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.EmpleadoInterfaceImpl;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.SedeInterfaceImpl;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Empleado;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements.SedeInterfaceImpl;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Sede;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;

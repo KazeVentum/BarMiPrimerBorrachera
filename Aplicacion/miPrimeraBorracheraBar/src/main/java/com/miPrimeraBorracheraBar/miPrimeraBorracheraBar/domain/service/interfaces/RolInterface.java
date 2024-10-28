@@ -1,4 +1,4 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces;
 
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Rol;
 import org.springframework.http.ResponseEntity;

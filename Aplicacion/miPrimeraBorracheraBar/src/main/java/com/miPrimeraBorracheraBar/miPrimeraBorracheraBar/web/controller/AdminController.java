@@ -1,12 +1,10 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.web.controller;
 
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.AdminInterfaceImpl;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements.AdminInterfaceImpl;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Admin;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

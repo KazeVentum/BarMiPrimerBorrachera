@@ -1,8 +1,9 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements;
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.EmpleadoIdNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.EmpleadoNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.empleadoException.EmpleadoIdNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.empleadoException.EmpleadoNotFoundException;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.repository.EmpleadoRepository;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces.EmpleadoInterface;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.web.controller;
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.EmpleadoInterfaceImpl;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements.EmpleadoInterfaceImpl;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Empleado;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;

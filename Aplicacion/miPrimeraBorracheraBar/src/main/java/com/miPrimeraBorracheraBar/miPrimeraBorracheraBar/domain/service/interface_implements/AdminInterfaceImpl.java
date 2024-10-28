@@ -1,8 +1,9 @@
-package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service;
+package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements;
 
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.AdminIdNotFoundException;
-import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.AdminNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.adminException.AdminIdNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.adminException.AdminNotFoundException;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.repository.AdminRepository;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces.AdminInterface;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

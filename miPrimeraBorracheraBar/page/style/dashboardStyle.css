@@ -21,6 +21,101 @@
 	--black: #151f25;
 }
 
+:root.dark-mode {
+    --white: #0f1a1e;       /* Tono oscuro para --white */
+    --iceBlue: #204b6a;      /* Tono oscuro para --iceBlue */
+    --lightBlue: #33607a;    /* Tono oscuro para --lightBlue */
+    --violet: #5a4b71;       /* Tono oscuro para --violet */
+    --whiteBlue: #3d7d94;    /* Tono oscuro para --whiteBlue */
+    --mediumBlue: #1a3246;
+	--translucidBlue: #1a32468e;     /* Tono oscuro para --mediumBlue */
+    --darkBlue: #111f2b;     /* Tono oscuro para --darkBlue */
+    --black: #0b1419;
+	--white2: #ffffffe6;
+	--colorText: #b9dce9; 
+	--title: #5dc1fb;   /* Tono más oscuro para --black */
+}
+
+/* DARK MODE TRANSITIONS */
+
+/* Content */
+:root.dark-mode body {
+    background: var(--black);
+}
+:root.dark-mode #sidebar {
+    background: var(--mediumBlue);
+    color: var(--white);
+}
+:root.dark-mode #sidebar .side-menu a {
+    color: var(--white2);
+}
+:root.dark-mode #sidebar .divider {
+	color: var(--title)
+}
+:root.dark-mode #sidebar .brand {
+	background: var(--mediumBlue);
+    color: var(--white2);
+}
+
+:root.dark-mode main .breadcrumbs li a {
+	color: var(--whiteBlue)
+}
+
+:root.dark-mode nav {
+    background: var(--darkBlue);
+    color: var(--white2);
+}
+:root.dark-mode main .title {
+    color: var(--title);
+}
+
+:root.dark-mode nav .profile-title {
+	color: var(--white2);
+}
+
+/* CARDS */
+:root.dark-mode main .card .head h1 {
+	color: var(--title) !important;
+}
+:root.dark-mode main .info-data {
+    color: var(--colorText);
+}
+:root.dark-mode main .info-data .card {
+    background: var(--mediumBlue);
+}
+:root.dark-mode .form-container {
+    background-color: var(--darkBlue);
+    color: var(--white);
+}
+:root.dark-mode button#cancelar {
+    color: var(--whiteBlue);
+}
+:root.dark-mode button#guardar {
+    background-color: #1e3c56;
+}
+:root.dark-mode button#guardar:hover {
+    background-color: #365c7e;
+}
+
+/* Forms */
+
+:root.dark-mode h2 {
+	color: var(--title);
+}
+
+:root.dark-mode label {
+	color: var(--white2);
+}
+/* Formularios */
+:root.dark-mode input[type="text"], input[type="email"],input[type="tel"], input[type="password"] {
+	background-color: var(--translucidBlue);
+	color: var(--white2);
+}
+
+:root.dark-mode select {
+	background-color: var(--darkBlue);
+	color: var(--white2);
+}
 html {
 	overflow-x: hidden;
 }
@@ -354,7 +449,8 @@ main .card .head {
 }
 main .card .head h1 {
     font-size: 20px;
-    color: #202074;
+    color: #d0ff00;
+	/* color: #202074; */
     font-weight: 600;
     margin-bottom: 10px;
 }

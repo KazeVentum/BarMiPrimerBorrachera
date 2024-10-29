@@ -130,3 +130,22 @@ const buttonClearToken = document.getElementById('buttonClearToken');
 buttonClearToken.addEventListener('click', function() {
 	cleanToken();
 });
+
+
+// DarkMode
+const toggleDarkMode = () => {
+    const isDarkModeEnabled = document.documentElement.classList.toggle('dark-mode');
+    // Almacena el estado en localStorage
+    localStorage.setItem('dark-mode', isDarkModeEnabled ? 'enabled' : 'disabled');
+};
+
+// Verifica si el modo oscuro está activado al cargar la página
+if (localStorage.getItem('dark-mode') === 'enabled') {
+    document.documentElement.classList.add('dark-mode');
+}
+
+// Asigna el evento de clic al enlace de Dark Mode
+document.getElementById('darkModeToggle').addEventListener('click', (e) => {
+    e.preventDefault(); // Evita la recarga de la página
+    toggleDarkMode();
+});

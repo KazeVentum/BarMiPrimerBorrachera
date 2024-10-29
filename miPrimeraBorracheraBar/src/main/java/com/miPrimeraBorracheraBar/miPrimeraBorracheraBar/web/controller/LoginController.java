@@ -18,7 +18,8 @@ public class LoginController {
     @Autowired
     private AdminRepository adminRepository;
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    // "https://lonely-cackle-9pw6q9474r93wxr-5500.app.github.dev"
+    @CrossOrigin(origins = "http://127.0.0.1:5500" )
     @PostMapping("login")
     public String login(
             @RequestParam("username") String username,

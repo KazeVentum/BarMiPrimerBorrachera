@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Define BASE_URL based on the environment
+  const BASE_URL = window.location.hostname === "localhost" 
+    ? "http://localhost:8080" 
+    : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
   // Get the current URL
   const currentUrl = window.location.pathname;
 
   if (currentUrl.includes("login.html")) {
-
     // Specific code for the login page
     const loginForm = document.getElementById("formUserToken");
     const loginUserNameInput = document.getElementById("adminToken");
@@ -19,22 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
       loginFormData.append("username", userName);
       loginFormData.append("password", password);
 
-      await fetch("http://localhost:8080/login", {
+      await fetch(`${BASE_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `username=${encodeURIComponent(
-          userName
-        )}&password=${encodeURIComponent(password)}`,
+        body: `username=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`,
       })
         .then((response) => {
           if (!response.ok) {
             alert("Incorrect username or password");
-            throw new Error(
-              "Error obtaining login token. HTTP status code:" +
-                response.status
-            );
+            throw new Error("Error obtaining login token. HTTP status code:" + response.status);
           }
           return response.text(); 
         })
@@ -49,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   } else if (currentUrl.includes("register.html")) {
-
-  // Specific code for the registration page
+    // Specific code for the registration page
     const registerButton = document.getElementById("btnRegister");
     const registerUserNameInput = document.getElementById("adminUser");
     const registerPasswordInput = document.getElementById("passwordUser");
@@ -66,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         password: password,
       };
 
-      await fetch("http://localhost:8080/register", {
+      await fetch(`${BASE_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

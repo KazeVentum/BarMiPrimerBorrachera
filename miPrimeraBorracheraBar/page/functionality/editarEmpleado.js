@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
     // Obtener el ID del empleado de la URL
+    const BASE_URL = window.location.hostname === "localhost" 
+    ? "http://localhost:8080" 
+    : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
+
     const params = new URLSearchParams(window.location.search);
     const empleadoId = params.get("id");
 
@@ -10,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const token = sessionStorage.getItem('jwtToken');
             console.log("Token:", token); // Depuración
 
-            const response = await fetch(`http://localhost:8080/empleado/${empleadoId}`, {
+            const response = await fetch(`${BASE_URL}/empleado/${empleadoId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -60,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function cargarRoles() {
     try {
         const token = sessionStorage.getItem('jwtToken');
-        const response = await fetch('http://localhost:8080/rol', {
+        const response = await fetch(`${BASE_URL}/rol`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -85,7 +90,7 @@ async function cargarRoles() {
 async function cargarSedes() {
     try {
         const token = sessionStorage.getItem('jwtToken');
-        const response = await fetch('http://localhost:8080/sede', {
+        const response = await fetch(`${BASE_URL}/sede`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -127,7 +132,7 @@ document.getElementById("employeeEditForm").addEventListener("submit", async (e)
 
     try {
         const token = sessionStorage.getItem('jwtToken');
-        const response = await fetch(`http://localhost:8080/empleado/${empleadoId}`, {
+        const response = await fetch(`${BASE_URL}/empleado/${empleadoId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

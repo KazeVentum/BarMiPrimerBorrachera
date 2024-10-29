@@ -1,6 +1,11 @@
 import * as rol from "./rol.js";
 import * as sede from "./sede.js";
 
+const BASE_URL = window.location.hostname === "localhost" 
+  ? "http://localhost:8080" 
+  : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
+
 export function crearEmpleados() {
     const formContainer = document.getElementById('showData');
 
@@ -111,7 +116,7 @@ export function crearEmpleados() {
 
         const token = sessionStorage.getItem('jwtToken');
 
-        fetch("http://localhost:8080/empleado", {
+        fetch(`${BASE_URL}/empleado`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -127,7 +132,7 @@ export function crearEmpleados() {
         })
         .catch(error => console.error("Error al crear el empleado:", error));
 
-        fetch("http://localhost:8080/register", {
+        fetch(`${BASE_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -147,7 +152,7 @@ export function crearEmpleados() {
 
 export function MostrarEmpleados(){
     const token = sessionStorage.getItem('jwtToken'); 
-    fetch('http://localhost:8080/empleado', {
+    fetch(`${BASE_URL}/empleado`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -188,7 +193,7 @@ export function MostrarEmpleados(){
 
 function editarEmpleado(id){
     const token = sessionStorage.getItem('jwtToken'); 
-    fetch(`http://localhost:8080/empleado/${id}`, {
+    fetch(`${BASE_URL}/empleado/${id}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -269,7 +274,7 @@ function editarEmpleado(id){
         
             try {
                 const token = sessionStorage.getItem('jwtToken');
-                const response = await fetch(`http://localhost:8080/empleado/${id}`, {
+                const response = await fetch(`${BASE_URL}/empleado/${id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -306,7 +311,7 @@ function questionDeleteEmployee(id) {
 function eliminarEmpleado(id) {
     const token = sessionStorage.getItem('jwtToken');
     
-    fetch(`http://localhost:8080/empleado/${id}`, {
+    fetch(`${BASE_URL}/empleado/${id}`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",

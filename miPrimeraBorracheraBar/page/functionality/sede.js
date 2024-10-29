@@ -1,3 +1,7 @@
+const BASE_URL = window.location.hostname === "localhost" 
+  ? "http://localhost:8080" 
+  : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
 export function CrearSedes() {
     const formContainer = document.getElementById('showData');
 
@@ -43,7 +47,7 @@ export function CrearSedes() {
 
         const token = sessionStorage.getItem('jwtToken');
 
-        fetch("http://localhost:8080/sede", {
+        fetch(`${BASE_URL}/sede`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +72,7 @@ export function CrearSedes() {
 
 export function MostrarSedes(){
     const token = sessionStorage.getItem('jwtToken'); 
-    fetch('http://localhost:8080/sede', {
+    fetch(`${BASE_URL}/sede`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -106,7 +110,7 @@ export function MostrarSedes(){
 
 function editarSede(id){
     const token = sessionStorage.getItem('jwtToken'); 
-    fetch(`http://localhost:8080/sede/${id}`, {
+    fetch(`${BASE_URL}/sede/${id}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -159,7 +163,7 @@ function editarSede(id){
         
             try {
                 const token = sessionStorage.getItem('jwtToken');
-                const response = await fetch(`http://localhost:8080/sede/${id}`, {
+                const response = await fetch(`${BASE_URL}/sede/${id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -198,7 +202,7 @@ function questionDeleteSede(id) {
 function eliminarSede(id) {
     const token = sessionStorage.getItem('jwtToken');
     
-    fetch(`http://localhost:8080/sede/${id}`, {
+    fetch(`${BASE_URL}/sede/${id}`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",
@@ -226,7 +230,7 @@ function eliminarSede(id) {
 // Logica para empleados
 export function cargarSedes() {
     const token = sessionStorage.getItem('jwtToken');
-    fetch("http://localhost:8080/sede", {
+    fetch(`${BASE_URL}/sede`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -260,7 +264,7 @@ export function cargarSedes() {
 }
 export function cargarSedesEdicion(selectedSedeId) {
     const token = sessionStorage.getItem('jwtToken');
-    fetch("http://localhost:8080/sede", {
+    fetch(`${BASE_URL}/sede`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`

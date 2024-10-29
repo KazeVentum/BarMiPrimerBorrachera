@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:8080", "http://127.0.0.1:5500", "http://127.0.0.1:5501")
+                        .allowedOrigins("http://localhost:8080", "http://127.0.0.1:5500", "http://127.0.0.1:5501", "https://lonely-cackle-9pw6q9474r93wxr-5500.app.github.dev")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*") // Permitir todos los encabezados
                         .exposedHeaders("Authorization") // Encabezados expuestos, si hay alguno

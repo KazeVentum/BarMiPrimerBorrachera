@@ -1,7 +1,12 @@
+const BASE_URL = window.location.hostname === "localhost" 
+? "http://localhost:8080" 
+: "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
 export function cargarRoles() {
+
     const token = sessionStorage.getItem('jwtToken');
     console.log("Token JWT:", token); // Verifica si el token está presente
-    fetch("http://localhost:8080/rol", {
+    fetch(`${BASE_URL}/rol`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -44,7 +49,7 @@ export function cargarRoles() {
 
 export function cargarRolesEdicion(selectedRolId) {
     const token = sessionStorage.getItem('jwtToken');
-    fetch("http://localhost:8080/rol", {
+    fetch(`${BASE_URL}/rol`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`

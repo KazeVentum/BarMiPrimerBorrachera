@@ -1,4 +1,6 @@
 package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interface_implements;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.inventarioException.InventarioIdNotFoundException;
+import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.exceptions.inventarioException.InventarioNotFoundException;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.repository.InventarioRepository;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.domain.service.interfaces.InventarioInterface;
 import com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity.Inventario;
@@ -21,26 +23,54 @@ public class InventarioInterfaceImpl implements InventarioInterface {
 
     @Override
     public List<Inventario> getAll() {
-        return List.of();
+        return inventarioRepository.findAll();
     }
 
     @Override
     public ResponseEntity<Inventario> getById(Object id) {
-        return null;
+        try{
+            Long newId = Long.parseLong(id.toString());
+            Inventario intenvario = inventarioRepository.findById(newId)
+                    .orElseThrow(() -> new InventarioNotFoundException("Inventario no encontrado"));
+                return ResponseEntity.ok(intenvario);
+            } catch (NumberFormatException e) {
+            throw new InventarioNotFoundException("Has ingresado una letra u otro caracter diferente a un numero de tipo Long");
+            }
     }
 
     @Override
     public ResponseEntity<Inventario> save(Inventario inventario) {
-        return null;
+        inventarioRepository.save(inventario);
+        return ResponseEntity.ok(inventario);
     }
 
     @Override
     public ResponseEntity<Void> delete(Long id) {
-        return null;
+        if (inventarioRepository.existsById(id)) {
+            inventarioRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Override
-    public ResponseEntity<Inventario> update(Object id, Inventario inventario) {
-        return null;
+    public ResponseEntity<Inventario> update(Object id, Inventario inventarioUpdate) {
+       try {
+           Long newId = Long.parseLong(id.toString());
+           Optional<Inventario> optionalInventario = inventarioRepository.findById(newId);
+           if(optionalInventario.isPresent()) {
+               Inventario inventarioExistente = optionalInventario.get();
+               inventarioExistente.setProducto(inventarioUpdate.getProducto());
+               inventarioExistente.setCantidad(inventarioUpdate.getCantidad());
+               inventarioExistente.setPrecio_venta(inventarioUpdate.getPrecio_venta());
+               inventarioRepository.save(inventarioExistente);
+               return ResponseEntity.ok(inventarioExistente);
+           }else {
+               throw new InventarioNotFoundException("Inventario no encontrado por dicho Id para actualizar");
+           }
+       } catch (NumberFormatException e) {
+        throw new InventarioIdNotFoundException(" Has ingresado una letra u otro caracter diferente a un numero de tipo long");
+       }
     }
 }

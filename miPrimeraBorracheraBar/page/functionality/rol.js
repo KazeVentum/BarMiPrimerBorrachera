@@ -1,6 +1,8 @@
-const BASE_URL = window.location.hostname === "localhost" 
+const BASE_URL = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") 
 ? "http://localhost:8080" 
 : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
+console.log(BASE_URL);
 
 export function cargarRoles() {
 

@@ -1,9 +1,11 @@
 import * as rol from "./rol.js";
 import * as sede from "./sede.js";
 
-const BASE_URL = window.location.hostname === "localhost" 
-  ? "http://localhost:8080" 
-  : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+const BASE_URL = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") 
+? "http://localhost:8080" 
+: "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+
+console.log(BASE_URL);
 
 
 export function crearEmpleados() {

@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Define BASE_URL based on the environment
-  const BASE_URL = window.location.hostname === "localhost" 
-    ? "http://localhost:8080" 
-    : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
+  const BASE_URL = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") 
+  ? "http://localhost:8080" 
+  : "https://lonely-cackle-9pw6q9474r93wxr-8080.app.github.dev";
 
+  console.log(BASE_URL);
+  
   // Get the current URL
   const currentUrl = window.location.pathname;
 

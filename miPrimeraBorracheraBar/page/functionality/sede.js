@@ -5,6 +5,7 @@ const BASE_URL = (window.location.hostname === "127.0.0.1" || window.location.ho
 console.log(BASE_URL);
 
 export function CrearSedes() {
+    document.getElementById('titleSection').textContent = 'Modulo Sedes';
     const formContainer = document.getElementById('showData');
 
     formContainer.innerHTML = `
@@ -73,6 +74,7 @@ export function CrearSedes() {
 }
 
 export function MostrarSedes(){
+    document.getElementById('titleSection').textContent = 'Sedes Registradas';
     const token = sessionStorage.getItem('jwtToken'); 
     fetch(`${BASE_URL}/sede`, {
         method: 'GET',
@@ -146,7 +148,7 @@ function editarSede(id){
         const mainContent = document.querySelector('main');
         mainContent.appendChild(formContainer);
         
-        // Rellenar el formulario con la información del empleado
+        // Rellenar el formulario con la información de la sede
         document.getElementById("nombreEdit").value = data.nombre;
         document.getElementById("ciudadEdit").value = data.ciudad;
         document.getElementById("direccionEdit").value = data.direccion;
@@ -187,8 +189,6 @@ function editarSede(id){
         });
     })
     .catch(error => console.error('Error:', error));
-
-    
 }
 
 

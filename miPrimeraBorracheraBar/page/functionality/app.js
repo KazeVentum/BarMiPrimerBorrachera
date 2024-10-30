@@ -26,3 +26,7 @@ document.getElementById('createProduct_btn').addEventListener("click", function(
     producto.CrearProductos()
 })
 
+document.getElementById('showProduct_btn').addEventListener("click", function() {
+    producto.MostrarProductos()
+})
+

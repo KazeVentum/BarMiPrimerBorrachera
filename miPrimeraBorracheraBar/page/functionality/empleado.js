@@ -9,6 +9,7 @@ console.log(BASE_URL);
 
 
 export function crearEmpleados() {
+    document.getElementById('titleSection').textContent = 'Modulo Empleados';
     const formContainer = document.getElementById('showData');
 
     formContainer.innerHTML = `
@@ -153,6 +154,7 @@ export function crearEmpleados() {
 }
 
 export function MostrarEmpleados(){
+    document.getElementById('titleSection').textContent = 'Empleados Registrados';
     const token = sessionStorage.getItem('jwtToken'); 
     fetch(`${BASE_URL}/empleado`, {
         method: 'GET',

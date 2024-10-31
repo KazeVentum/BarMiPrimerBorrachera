@@ -30,9 +30,9 @@ public class InventarioInterfaceImpl implements InventarioInterface {
     public ResponseEntity<Inventario> getById(Object id) {
         try{
             Long newId = Long.parseLong(id.toString());
-            Inventario intenvario = inventarioRepository.findById(newId)
+            Inventario inventario = inventarioRepository.findById(newId)
                     .orElseThrow(() -> new InventarioNotFoundException("Inventario no encontrado"));
-                return ResponseEntity.ok(intenvario);
+                return ResponseEntity.ok(inventario);
             } catch (NumberFormatException e) {
             throw new InventarioNotFoundException("Has ingresado una letra u otro caracter diferente a un numero de tipo Long");
             }

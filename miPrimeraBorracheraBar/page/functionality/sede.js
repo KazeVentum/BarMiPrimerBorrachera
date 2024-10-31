@@ -70,6 +70,7 @@ export function CrearSedes() {
 
     document.getElementById("cancelar").addEventListener("click", function(event) {
         document.getElementById('sedeCreateForm').reset();
+        autoClickButton("Dashboard")
     })
 }
 
@@ -153,7 +154,11 @@ function editarSede(id){
         document.getElementById("ciudadEdit").value = data.ciudad;
         document.getElementById("direccionEdit").value = data.direccion;
         
-        
+        document.getElementById("cancelar").addEventListener("click", function(event) {
+            document.getElementById('sedeEditForm').reset();
+            autoClickButton("showSede_btn")
+        })
+
         document.getElementById("sedeEditForm").addEventListener("submit", async (e) => {
             e.preventDefault();
         

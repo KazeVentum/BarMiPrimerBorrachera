@@ -150,6 +150,7 @@ export function crearEmpleados() {
 
     document.getElementById("cancelar").addEventListener("click", function(event) {
         document.getElementById('employeeCreateForm').reset();
+        autoClickButton("Dashboard");
     })
 }
 
@@ -260,6 +261,11 @@ function editarEmpleado(id){
 
         sede.cargarSedesEdicion(selectedSedeId);
         rol.cargarRolesEdicion(selectedRolId)
+
+        document.getElementById("cancelar").addEventListener("click", function(event) {
+            document.getElementById('employeeEditForm').reset();
+            autoClickButton("showEmployee_btn");
+        })
         
         document.getElementById("employeeEditForm").addEventListener("submit", async (e) => {
             e.preventDefault();

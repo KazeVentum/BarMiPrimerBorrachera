@@ -9,31 +9,31 @@ export function CrearProductos() {
     const formContainer = document.getElementById('showData');
     const IMGBB_API_KEY = '1a3d730813be69ae130ffcc8ea3da46c'; 
 
-    formContainer.innerHTML = `
-        <form id="productoCreateForm">
-            <h2 class="glow-text">Creación de Productos</h2>
-                <div class="main-form">
-                    <label for="nombre">Nombre del producto:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+        formContainer.innerHTML = `
+            <form id="productoCreateForm">
+                <h2 class="glow-text">Creación de Productos</h2>
+                    <div class="main-form">
+                        <label for="nombre">Nombre del producto:</label>
+                        <input type="text" id="nombre" name="nombre" required>
 
-                    <label for="precioDistribuidor">Precio del distribuidor:</label>
-                    <input type="number" id="precioDistribuidor" name="precioDistribuidor" required>
-                    
-                    <label for="imagen">Imagen del producto:</label>
-                    <input type="file" id="imagen" name="imagen" accept="image/*">
+                        <label for="precioDistribuidor">Precio del distribuidor:</label>
+                        <input type="number" id="precioDistribuidor" name="precioDistribuidor" required>
+                        
+                        <label for="imagen">Imagen del producto:</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*">
 
-                    <div id="imagenPreview" style="margin-top: 10px;">
-                        <img id="previewImg" src="" alt="Vista previa" style="display: none; max-width: 200px;">
+                        <div id="imagenPreview" style="margin-top: 10px;">
+                            <img id="previewImg" src="" alt="Vista previa" style="display: none; max-width: 200px;">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-actions">
-                    <button type="button" id="cancelar">Cancelar</button>
-                    <button type="submit" id="guardar">Guardar</button>
-                </div>
-        </form>
-    `;
-    
+                    <div class="form-actions">
+                        <button type="button" id="cancelar">Cancelar</button>
+                        <button type="submit" id="guardar">Guardar</button>
+                    </div>
+            </form>
+        `;
+        
     const mainContent = document.querySelector('main');
     mainContent.appendChild(formContainer);
 
@@ -112,6 +112,7 @@ export function CrearProductos() {
     document.getElementById("cancelar").addEventListener("click", function(event) {
         document.getElementById('productoCreateForm').reset();
         document.getElementById('previewImg').style.display = 'none';
+        autoClickButton("Dashboard")
     });
 }
 
@@ -156,6 +157,8 @@ export function MostrarProductos() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+
 
 let currentProductData;
 function editarProducto(id){
@@ -213,6 +216,11 @@ function editarProducto(id){
                 previewImg.style.display = "block";
                 previewImg.src = URL.createObjectURL(file);
             }
+        });
+
+        document.getElementById("cancelar").addEventListener("click", function(event) {
+            document.getElementById('productEditForm').reset();
+            autoClickButton("showProduct_btn")
         });
 
         document.getElementById("productEditForm").addEventListener("submit", async function(event) {

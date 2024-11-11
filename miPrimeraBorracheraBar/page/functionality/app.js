@@ -38,6 +38,6 @@ document.getElementById('createTable_btn').addEventListener("click", function() 
 })
 
 document.getElementById('showTable_btn').addEventListener("click", function() {
-    mesa.MostrarMesas()
+    mesa.MostrarMesasFilter()
 })
 

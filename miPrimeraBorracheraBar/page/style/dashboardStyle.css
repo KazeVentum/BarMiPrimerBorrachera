@@ -18,22 +18,26 @@
 	--whiteBlue: #84d2f6;
 	--mediumBlue: #244767;
 	--darkBlue: #1c3241;
-	--black: #151f25;
+	--nightDark: #66a7d08b;
+	--enfasis: #3d6680;
+	--title: #1a5980;
 }
 
 :root.dark-mode {
-    --white: #0f1a1e;       /* Tono oscuro para --white */
-    --iceBlue: #204b6a;      /* Tono oscuro para --iceBlue */
-    --lightBlue: #33607a;    /* Tono oscuro para --lightBlue */
-    --violet: #5a4b71;       /* Tono oscuro para --violet */
-    --whiteBlue: #3d7d94;    /* Tono oscuro para --whiteBlue */
+    --white: #0f1a1e;       
+    --iceBlue: #204b6a;      
+    --lightBlue: #33607a;    
+    --violet: #5a4b71;       
+    --whiteBlue: #3d7d94;    
     --mediumBlue: #1a3246;
 	--translucidBlue: #1a32468e;     /* Tono oscuro para --mediumBlue */
     --darkBlue: #111f2b;     /* Tono oscuro para --darkBlue */
     --black: #0b1419;
 	--white2: #ffffffe6;
 	--colorText: #b9dce9; 
-	--title: #5dc1fb;   /* Tono más oscuro para --black */
+	--nightDark: #1b4057;
+	--title: #5dc1fb; 
+	--enfasis: #5dc1fb98;  
 }
 
 /* DARK MODE TRANSITIONS */
@@ -484,8 +488,7 @@ main .card .head {
 }
 main .card .head h1 {
     font-size: 20px;
-    color: #d0ff00;
-	/* color: #202074; */
+	color: #202074;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -733,6 +736,71 @@ button#guardar {
 button#guardar:hover {
     background-color: #1f4364;
 }
+
+
+/* Ajustes de filtro */
+#AuxilaryData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--light);
+    border-radius: 8px;
+}
+
+#AuxilaryData #filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    flex: 1; 
+}
+
+#AuxilaryData label {
+    font-size: 14px;
+    color: var(--colorText);
+    margin-right: 5px;
+}
+
+#AuxilaryData select, #AuxilaryData input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+    min-width: 150px;
+}
+
+#AuxilaryData button {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    background-color: var(--nightDark);
+    color: var(--colorText);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#AuxilaryData button:hover {
+    padding: 8px 15px;
+    background-color: var(--enfasis);
+    color: var(--colorText);
+    transition: background-color 0.3s ease;
+}
+
+/* Ajustes para mover los botones al final de la línea */
+#buttons_filter {
+    display: flex;
+    justify-content: flex-end;  /* Alinea los botones a la derecha */
+    gap: 10px;  /* Espacio entre los botones */
+    margin-left: auto; 
+	margin-right: 7% ; /* Asegura que el div de los botones quede a la derecha */
+}
+
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

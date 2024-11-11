@@ -1,6 +1,7 @@
 import * as empleado from "./empleado.js";
 import * as sede from "./sede.js";
 import * as producto from "./producto.js";
+import * as mesa from "./mesa.js";
 
 //Empleado
 document.getElementById('createEmployee_btn').addEventListener("click", function() {
@@ -28,5 +29,15 @@ document.getElementById('createProduct_btn').addEventListener("click", function(
 
 document.getElementById('showProduct_btn').addEventListener("click", function() {
     producto.MostrarProductos()
+})
+
+
+//Mesa
+document.getElementById('createTable_btn').addEventListener("click", function() {
+    mesa.CrearMesas()
+})
+
+document.getElementById('showTable_btn').addEventListener("click", function() {
+    mesa.MostrarMesas()
 })
 

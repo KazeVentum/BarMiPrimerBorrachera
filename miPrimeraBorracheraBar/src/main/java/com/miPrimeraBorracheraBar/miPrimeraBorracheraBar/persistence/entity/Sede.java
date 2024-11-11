@@ -2,6 +2,7 @@ package com.miPrimeraBorracheraBar.miPrimeraBorracheraBar.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,9 @@ public class Sede {
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     private List<Empleado> empleados;
+
+    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    private List<Mesa> mesas;
 
     public String getNombre() {
         return nombre;
@@ -59,6 +63,8 @@ public class Sede {
                 ", nombre='" + nombre + '\'' +
                 ", Ciudad='" + Ciudad + '\'' +
                 ", Direccion='" + Direccion + '\'' +
+                ", empleados=" + empleados +
+                ", mesas=" + mesas +
                 '}';
     }
 }

@@ -69,6 +69,7 @@ public class MesaInterfaceImpl implements MesaInterface {
                 mesaExistente.setNombre(mesaUpdate.getNombre());
                 mesaExistente.setEstado(mesaUpdate.getEstado());
                 mesaExistente.setNumSillas(mesaUpdate.getNumSillas());
+                mesaExistente.setSede(mesaUpdate.getSede());
                 mesaRepository.save(mesaExistente);
                 return ResponseEntity.ok(mesaExistente);
             }else {

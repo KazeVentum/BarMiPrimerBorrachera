@@ -18,6 +18,10 @@ public class Mesa {
     @Column(name = "num_sillas")
     private Long numSillas;
 
+    @ManyToOne
+    @JoinColumn(name = "id_sede")
+    private Sede sede;
+
     public Mesa() {
     }
 
@@ -53,6 +57,14 @@ public class Mesa {
         this.numSillas = numSillas;
     }
 
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
     @Override
     public String toString() {
         return "Mesa{" +
@@ -60,7 +72,7 @@ public class Mesa {
                 ", nombre='" + nombre + '\'' +
                 ", estado='" + estado + '\'' +
                 ", numSillas=" + numSillas +
+                ", sede=" + sede +
                 '}';
     }
-
 }

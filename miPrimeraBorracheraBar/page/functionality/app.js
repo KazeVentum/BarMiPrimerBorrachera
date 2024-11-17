@@ -2,6 +2,7 @@ import * as empleado from "./empleado.js";
 import * as sede from "./sede.js";
 import * as producto from "./producto.js";
 import * as mesa from "./mesa.js";
+import * as inventario from "./inventario.js";
 
 //Empleado
 document.getElementById('createEmployee_btn').addEventListener("click", function() {
@@ -40,4 +41,14 @@ document.getElementById('createTable_btn').addEventListener("click", function() 
 document.getElementById('showTable_btn').addEventListener("click", function() {
     mesa.MostrarMesasFilter()
 })
+
+//Inventario
+document.getElementById('createInventory_btn').addEventListener("click", function() {
+    inventario.CrearInventario()
+})
+
+// document.getElementById('showInventory_btn').addEventListener("click", function() {
+//     inventario.MostrarInventario()
+// })
+
 

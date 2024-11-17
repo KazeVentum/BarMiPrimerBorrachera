@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((token) => {
           sessionStorage.setItem("jwtToken", token.trim()); //Save the JWT token in sessionStorage
+          localStorage.setItem("userName", userName); 
           
             // Decode the JWT token to get the role
             const decodedToken = jwt_decode(token.trim());

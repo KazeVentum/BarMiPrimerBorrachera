@@ -288,7 +288,7 @@ export function cargarSedesEdicion(selectedSedeId) {
             option.value = sede.id;
             option.text = sede.nombre;
             if (sede.id === selectedSedeId) {
-                option.selected = true; // Marcar la sede correspondiente como seleccionada por defecto
+                option.selected = true; 
             }
             selectSede.appendChild(option);
         });

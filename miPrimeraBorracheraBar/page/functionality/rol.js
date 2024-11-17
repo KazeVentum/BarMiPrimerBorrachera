@@ -78,5 +78,5 @@ export function cargarRolesEdicion(selectedRolId) {
         alert("Ocurrió un error al cargar los roles. Revisa la consola para más detalles.");
     });
 }
-// Validar la selección de rol en el envío del formulario
+
 

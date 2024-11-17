@@ -62,6 +62,7 @@ public class InventarioInterfaceImpl implements InventarioInterface {
            if(optionalInventario.isPresent()) {
                Inventario inventarioExistente = optionalInventario.get();
                inventarioExistente.setProducto(inventarioUpdate.getProducto());
+               inventarioExistente.setSede(inventarioUpdate.getSede());
                inventarioExistente.setCantidad(inventarioUpdate.getCantidad());
                inventarioExistente.setPrecio_venta(inventarioUpdate.getPrecio_venta());
                inventarioRepository.save(inventarioExistente);

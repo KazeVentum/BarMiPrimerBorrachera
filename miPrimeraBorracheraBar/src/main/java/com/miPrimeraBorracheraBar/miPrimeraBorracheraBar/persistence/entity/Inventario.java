@@ -20,6 +20,10 @@ public class Inventario {
     @JoinColumn(name = "id_producto")
     private Producto producto;
 
+    @ManyToOne
+    @JoinColumn(name = "id_sede")
+    private Sede sede;
+
     //constructor
     public Inventario() {
     }
@@ -57,7 +61,16 @@ public class Inventario {
         this.producto = producto;
     }
 
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
     //toString Method
+
     @Override
     public String toString() {
         return "Inventario{" +
@@ -65,6 +78,7 @@ public class Inventario {
                 ", cantidad=" + cantidad +
                 ", precio_venta=" + precio_venta +
                 ", producto=" + producto +
+                ", sede=" + sede +
                 '}';
     }
 }

@@ -1,5 +1,10 @@
+const namePage = localStorage.getItem('userName');
 
 
+
+document.getElementById('titleSection').textContent = `Bienvenido ${namePage}`;
+
+document.getElementById('Username').textContent = `${namePage}`;
 
 // SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');

@@ -209,7 +209,7 @@ export function MostrarMesasFilter() {
     const hideFilterOnOtherButtons = () => {
         // Aquí pones los botones que no deberían mostrar el filtro
         const buttonsToHideFilter = [
-            'createEmployee_btn', 'showEmployee_btn', 'createSede_btn', 'showSede_btn','createProduct_btn','showProduct_btn','createTable_btn' // Añadir los botones que desees
+            'createEmployee_btn', 'showEmployee_btn', 'createSede_btn', 'showSede_btn','createProduct_btn','showProduct_btn','createTable_btn','createInventory_btn','showInventory_btn' //Botones para no mostrar el filtro
         ];
 
         buttonsToHideFilter.forEach(buttonId => {

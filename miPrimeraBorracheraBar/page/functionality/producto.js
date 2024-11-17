@@ -333,7 +333,6 @@ function eliminarProducto(id) {
     }
 }
 
-// Logica para empleados
 export function cargarProductos() {
     const token = sessionStorage.getItem('jwtToken');
     fetch(`${BASE_URL}/producto`, {
@@ -343,58 +342,29 @@ export function cargarProductos() {
         }
     })
     .then(response => response.ok ? response.json() : Promise.reject(response.text()))
-    .then(Productos => {
-        const selectSede = document.getElementById('sede');
-        selectSede.innerHTML = ''; // Limpiar opciones anteriores
+    .then(productos => {
+        const selectProducto = document.getElementById('producto');
+        selectProducto.innerHTML = ''; // Limpiar opciones anteriores
 
         // Agregar una opción por defecto que no sea válida
         const defaultOption = document.createElement('option');
         defaultOption.value = "";
         defaultOption.text = "Selecciona un producto";
         defaultOption.disabled = true;
-        defaultOption.selected = true; // Marcarla como seleccionada por defecto
-        selectSede.appendChild(defaultOption);
+        defaultOption.selected = true; 
+        selectProducto.appendChild(defaultOption);
 
-        // Agregar las Productos dinámicamente
-        Productos.forEach(sede => {
+        // Agregar productos dinámicamente
+        productos.forEach(producto => {
             const option = document.createElement('option');
-            option.value = sede.id;
-            option.text = sede.nombre;
-            selectSede.appendChild(option);
+            option.value = producto.id;
+            option.text = producto.nombre;
+            selectProducto.appendChild(option);
         });
     })
     .catch(error => {
-        console.error("Error al cargar Productos:", error);
-        alert("Ocurrió un error al cargar las Productos. Revisa la consola para más detalles.");
-    });
-}
-export function cargarProductosEdicion(selectedProductId) {
-    const token = sessionStorage.getItem('jwtToken');
-    fetch(`${BASE_URL}/sede`, {
-        method: "GET",
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    })
-    .then(response => response.ok ? response.json() : Promise.reject(response.text()))
-    .then(Productos => {
-        const selectSede = document.getElementById('sedeEdit');
-        selectSede.innerHTML = ''; // Limpiar opciones anteriores
-
-        // Agregar las Productos dinámicamente
-        Productos.forEach(sede => {
-            const option = document.createElement('option');
-            option.value = sede.id;
-            option.text = sede.nombre;
-            if (sede.id === selectedSedeId) {
-                option.selected = true; // Marcar la sede correspondiente como seleccionada por defecto
-            }
-            selectSede.appendChild(option);
-        });
-    })
-    .catch(error => {
-        console.error("Error al cargar Productos:", error);
-        alert("Ocurrió un error al cargar las Productos. Revisa la consola para más detalles.");
+        console.error("Error al cargar los productos:", error);
+        alert("Ocurrió un error al cargar los productos. Revisa la consola para más detalles.");
     });
 }
 

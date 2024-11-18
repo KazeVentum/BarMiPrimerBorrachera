@@ -153,10 +153,23 @@
 	color: var(--white2);
 }
 
+:root.dark-mode .backgroundSVG {
+	fill: #035c66;  
+}
+
+.backgroundSVG {
+	fill: #000000a9;  /* Cambiar el color del SVG a blanco */
+	width: 95vw;
+	height: 70vh;
+	margin-bottom: 150px;
+}
+
 
 
 html {
 	overflow-x: hidden;
+	height: 100%;  /* Asegura que el elemento html ocupe toda la altura de la ventana */
+    margin: 0;
 }
 
 body {
@@ -748,7 +761,7 @@ button#guardar:hover {
     border-radius: 8px;
 }
 
-#AuxilaryData #filters {
+#AuxilaryData .filters {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;

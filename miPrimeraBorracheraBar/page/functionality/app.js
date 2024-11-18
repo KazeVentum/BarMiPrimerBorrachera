@@ -4,6 +4,18 @@ import * as producto from "./producto.js";
 import * as mesa from "./mesa.js";
 import * as inventario from "./inventario.js";
 
+const formContainer = document.getElementById('showData');
+
+window.onload = function() {
+    fetch('./resources_page/Background.svg')
+        .then(response => response.text())
+        .then(svgContent => {
+            formContainer.innerHTML = svgContent;
+        })
+        .catch(error => {
+            console.error("Error al cargar el archivo SVG:", error);
+        });
+};
 //Empleado
 document.getElementById('createEmployee_btn').addEventListener("click", function() {
     empleado.crearEmpleados()
@@ -47,8 +59,8 @@ document.getElementById('createInventory_btn').addEventListener("click", functio
     inventario.CrearInventario()
 })
 
-// document.getElementById('showInventory_btn').addEventListener("click", function() {
-//     inventario.MostrarInventario()
-// })
+document.getElementById('showInventory_btn').addEventListener("click", function() {
+    inventario.MostrarInventarioFilter()
+})
 
 

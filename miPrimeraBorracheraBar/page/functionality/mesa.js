@@ -108,7 +108,7 @@ export function MostrarMesasFilter() {
     // Mostrar el filtro solo cuando se haga clic en "Mostrar Mesas"
     const auxilaryData = document.getElementById('AuxilaryData');
     auxilaryData.innerHTML = `
-        <div id="filters">
+        <div id="tableFilters" class="filters">
             <label for="filterSede">Filtrar por Sede:</label>
             <select id="filterSede">
                 <option value="">--Seleccione una Sede--</option>
@@ -137,6 +137,7 @@ export function MostrarMesasFilter() {
         // Llenar el filtro de Sede dinámicamente
         const sedeSelect = document.getElementById('filterSede');
         const sedes = [...new Set(data.map(mesa => mesa.sede ? mesa.sede.nombre : 'No disponible'))]; // Obtener las sedes únicas
+
         sedes.forEach(sede => {
             const option = document.createElement('option');
             option.value = sede;
@@ -209,12 +210,12 @@ export function MostrarMesasFilter() {
     const hideFilterOnOtherButtons = () => {
         // Aquí pones los botones que no deberían mostrar el filtro
         const buttonsToHideFilter = [
-            'createEmployee_btn', 'showEmployee_btn', 'createSede_btn', 'showSede_btn','createProduct_btn','showProduct_btn','createTable_btn','createInventory_btn','showInventory_btn' //Botones para no mostrar el filtro
+            'createEmployee_btn', 'showEmployee_btn', 'createSede_btn', 'showSede_btn','createProduct_btn','showProduct_btn','createTable_btn','createInventory_btn' //Botones para no mostrar el filtro
         ];
 
         buttonsToHideFilter.forEach(buttonId => {
             document.getElementById(buttonId)?.addEventListener('click', () => {
-                // Limpiar el contenido del filtro
+
                 auxilaryData.innerHTML = ''; // Elimina el filtro
             });
         });
@@ -224,50 +225,6 @@ export function MostrarMesasFilter() {
     hideFilterOnOtherButtons();
 }
 
-
-export function MostrarMesas() {
-    document.getElementById('titleSection').textContent = 'Mesas Registradas';
-
-    const token = sessionStorage.getItem('jwtToken'); 
-    fetch(`${BASE_URL}/mesa`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        const clientCardsContainer = document.getElementById('showData');
-        let html = '';
-        data.forEach(data => {
-            html += `
-                <div class="card">
-                    <div class="head">
-                        <div>
-                            <h1>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
-                                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
-                                </svg>
-                                ${data.nombre}
-                            </h1>
-                            <h3>Numero de sillas: ${data.numSillas} </h3>
-                            <h3>Estado: ${data.estado}</h3>
-                            <h3>Sede: ${data.sede ? data.sede.nombre : 'No disponible'}</h3>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <button class="edit-btn" id="edit-btn" onclick="editarMesa(${data.id})">Editar</button>
-                        <button class="delete-btn" id="delete-btn" onclick="questionDeleteTable(${data.id})">Eliminar</button>
-                    </div>
-                </div>
-            `;
-        });
-        
-        clientCardsContainer.innerHTML = html;
-    })
-    .catch(error => console.error('Error:', error));
-}
 
 function editarMesa(id){
     console.log("ID recibido en editarMesa:", id);

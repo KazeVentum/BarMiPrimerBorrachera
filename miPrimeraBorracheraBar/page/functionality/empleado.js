@@ -46,7 +46,9 @@ export function crearEmpleados() {
             <input type="text" id="usuario" name="usuario" required>
 
             <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="contrasena" required>
+            <input type="password" id="contrasena" name="contrasena" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d[^A-Za-z\d]]{8,}" 
+    title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, un número y un carácter especial."
+    required>
 
             <div class="form-actions">
                 <button type="button" id="cancelar">Cancelar</button>

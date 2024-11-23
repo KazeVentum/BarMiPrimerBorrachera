@@ -41,20 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((token) => {
           sessionStorage.setItem("jwtToken", token.trim()); //Save the JWT token in sessionStorage
-          localStorage.setItem("userName", userName); 
-          
-            // Decode the JWT token to get the role
-            const decodedToken = jwt_decode(token.trim());
-            const userRole = decodedToken.role; // Assuming the role is stored under "role" claim
-  
-            // Redirect based on the role
-            if (userRole === 'administrador') {
-              window.location.href = "index.html";
-            } else if (userRole === 'cajero') {
-              window.location.href = "cajero.html";
-            } else if (userRole === 'mesero'){
-              window.location.href = "mesero.html"; // Default page if no matching role
-            }
+          window.location.href = "index.html";
         })
         .catch((error) => {
           console.error("Error obtaining login token:", error);
